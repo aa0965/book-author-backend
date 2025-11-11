@@ -6,6 +6,7 @@ import typeDefs from "./typeDefs/index.js";
 import resolvers from "./resolvers/index.js";
 import sequelize from "./db/sequelize.js";
 import connectMongo from "./db/mongoose.js";
+import cors from "cors";
 
 // Import models to ensure associations are set up before sync
 import "./models/Author.js";
@@ -16,6 +17,15 @@ dotenv.config();
 const SECRET_KEY = process.env.JWT_SECRET || "local_secret_key";
 
 const app = express();
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:3000", // local dev
+//       "https://your-frontend-domain.vercel.app", // replace with actual deployed frontend
+//     ],
+//     credentials: true,
+//   })
+// );
 
 const startServer = async () => {
   try {
